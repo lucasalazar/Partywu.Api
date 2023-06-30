@@ -8,6 +8,10 @@ export const register = async (req, res) => {
 
         const usernameRegex = new RegExp("^[A-Za-z0-9_.]+$");
 
+        if (await User.findOne({ username: username })) {
+            return res.status(500).json({ error: "username already taken" });
+        }
+
         if (!usernameRegex.test(username)) {
             return res.status(500).json({ error: "username not valid" });
         }

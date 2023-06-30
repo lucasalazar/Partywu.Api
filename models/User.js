@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema(
         },
         username: {
             type: String,
+            required: true,
             min: 5,
             max: 24,
             unique: true,
@@ -49,6 +50,10 @@ const UserSchema = new mongoose.Schema(
             default: [],
         },
         birthDate: Date,
+        friends: {
+            type: Array,
+            default: [],
+        },
     },
     { timestamps: true }
 );
